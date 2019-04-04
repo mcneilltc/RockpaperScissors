@@ -18,16 +18,16 @@ Create a single object named `slideshow` that represents the data and functional
 */
 const slideshow = {
     photoList: ['Photo1', 'Photo2', 'Photo3'],
-    currentPhotoIndex: 0,
+    currentPhotoIndex: -1,
     nextPhoto: function (){
         if (this.currentPhotoIndex < this.photoList.length-1){
             this.currentPhotoIndex++;
             console.log (this.photoList[this.currentPhotoIndex]);
-        }else { console.log('End of Slideshow');
+        }else { console.log('End of Slideshow'); this.pause();
     };
 },  
 prevPhoto: function(){
-    if(this.currentPhotoIndex > 0){
+    if(this.currentPhotoIndex > -1){
         this.currentPhotoIndex--;
         console.log(this.photoList[this.currentPhotoIndex--]);     
     }else { console.log('Begin Slideshow');
@@ -36,11 +36,17 @@ prevPhoto: function(){
 getCurrentPhoto: function(){
     console.log(this.photoList[this.currentPhotoIndex]);
 },
+playInterval: null,
+play: function(){this.playInterval= setInterval(this.nextPhoto.bind(this), 2000)},
+
+pause: function(){ clearInterval (this.playInterval)}
+
 }
-slideshow.getCurrentPhoto();
+/*slideshow.getCurrentPhoto();
 slideshow.prevPhoto();
 slideshow.getCurrentPhoto();
 slideshow.nextPhoto();
 slideshow.getCurrentPhoto();
 slideshow.nextPhoto();
-slideshow.nextPhoto();
+slideshow.nextPhoto();*/
+slideshow.play();

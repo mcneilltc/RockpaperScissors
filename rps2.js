@@ -48,8 +48,7 @@ function playRound(player1, player2, hands, winsC){
 console.log(`${player1.name} plays ${player1.hands}, and ${player2.name} plays ${player2.hands}`);
          
          if (player1.hands == player2.hands) 
-         {console.log("This is a tie.")
-        return null;
+         {console.log("This is a tie."   return null;
     }
         else{
             if(winsC[player1.hands]== player2.hands)
